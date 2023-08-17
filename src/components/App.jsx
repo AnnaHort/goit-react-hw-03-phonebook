@@ -19,7 +19,7 @@ export class App extends Component {
   
   componentDidMount() {
    const savedContacts = localStorage.getItem('quiz-contacts');
-   if(savedContacts !== 0) {
+   if(savedContacts !== null) {
 this.setState({contacts: JSON.parse(savedContacts)})
    }
   }
