@@ -16,6 +16,19 @@ export class App extends Component {
     name: '',
     number: '',
   };
+  
+  componentDidMount() {
+   const savedContacts = localStorage.getItem('quiz-contacts');
+   if(savedContacts !== 0) {
+this.setState({contacts: JSON.parse(savedContacts)})
+   }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('quiz-contacts', JSON.stringify(this.state.contacts))
+    }
+  }
 
   changeFilter = newFilter => {
     this.setState({
